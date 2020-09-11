@@ -1,0 +1,8 @@
+package com.java.controller;
+
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet(urlPatterns = {"/task", "/task/add", "/task/detail"})
+public class TaskController {
+	
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modules>
+  <module moduleId="org.eclipse.jst.jee.server:crm_app" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:demo1" serverId="Tomcat v9.0"/>
+  <module moduleId="org.eclipse.jst.jee.server:servlet_crm" serverId="Tomcat v9.0"/>
+  <module moduleId="org.eclipse.jst.jee.server:crud" serverId="Tomcat v9.0"/>
+  <module moduleId="org.eclipse.jst.jee.server:CrmApp" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:QLSP" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:LoginApp" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:QLSanPham" serverId="Tomcat v9.0"/>
+  <module moduleId="org.eclipse.jst.jee.server:SERVLET-CRM" serverId="Tomcat v9.0"/>
+  <module moduleId="org.eclipse.jst.jee.server:demo" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:SitemeshDemo" serverId="Tomcat v9.0 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:CrudServlet" serverId="Tomcat v9.0"/>
+</modules>

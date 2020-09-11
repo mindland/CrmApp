@@ -1,0 +1,71 @@
+package com.myclass.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.myclass.entity.Products;
+import com.myclass.jdbc.MysqlConnection;
+
+public class ProductDao {
+	
+	public List<Products> findAll(){
+		List<Products> listProducts = new LinkedList<Products>(); 
+		
+		try {
+			Connection connection = MysqlConnection.getConnection(); 
+			String query = "SELECT * FROM products"; 
+			
+			PreparedStatement statement = connection.prepareStatement(query); 
+			ResultSet resultSet = statement.executeQuery(); 
+			
+			while(resultSet.next()) {
+				Products product = new Products(); 
+				product.setId(resultSet.getString("id"));
+				product.setCateId(resultSet.getString("cateId"));
+				product.setName(resultSet.getString("name"));
+				product.setAmount(resultSet.getInt("amount"));
+				product.setId(resultSet.getFloat("price"));
+				listProducts.add(product)
+			}
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return listProducts;
+	}
+	
+	public Products findById(String id) {
+		for(Products product: listProduct) {
+			if(product.getId().equals(id)) {
+				return product; 
+			}
+		}
+		return null; 
+	}
+	
+	public void delete(String id) {
+		Products entity = this.findById(id); 
+		if(entity != null) {
+			listProduct.remove(entity); 
+		}
+	}
+	
+	public void insert(Products product) {
+		listProduct.add(product); 
+	}
+	
+	public void update(Products product) {
+		Products entity = this.findById(product.getId());
+		if(entity != null) {
+			entity.setCateId(product.getCateId());
+			entity.setName(product.getName());
+			entity.setAmount(product.getAmount());
+			entity.setPrice(product.getPrice());
+		}
+	}
+	
+}

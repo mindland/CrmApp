@@ -1,0 +1,82 @@
+package com.myclass.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.myclass.entity.Products;
+import com.myclass.jdbc.MysqlConnection;
+
+public class ProductDao {
+	
+	public List<Products> findAll(){
+		List<Products> listProducts = new LinkedList<Products>(); 
+		
+		try {
+			Connection connection = MysqlConnection.getConnection(); 
+			String query = "SELECT * FROM products"; 
+			
+			PreparedStatement statement = connection.prepareStatement(query); 
+			ResultSet resultSet = statement.executeQuery(); 
+			
+			while(resultSet.next()) {
+				Products product = new Products(); 
+				product.setId(resultSet.getString("id"));
+				product.setCateId(resultSet.getString("cateId"));
+				product.setName(resultSet.getString("name"));
+				product.setAmount(resultSet.getInt("amount"));
+				product.setPrice(resultSet.getFloat("price"));
+				listProducts.add(product);
+			}
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return listProducts;
+	}
+
+	public Products findById(String id) {
+List<Products> listProducts = new LinkedList<Products>(); 
+		
+		try {
+			Connection connection = MysqlConnection.getConnection(); 
+			String query = "SELECT * FROM products WHERE id = ?"; 
+			
+			PreparedStatement statement = connection.prepareStatement(query); 
+			ResultSet resultSet = statement.executeQuery(); 
+			
+			while(resultSet.next()) {
+				Products product = new Products(); 
+				product.setId(resultSet.getString("id"));
+				product.setCateId(resultSet.getString("cateId"));
+				product.setName(resultSet.getString("name"));
+				product.setAmount(resultSet.getInt("amount"));
+				product.setPrice(resultSet.getFloat("price"));
+				
+				return product; 
+
+			}
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return new Products();
+	}
+	
+	public void delete(String id) {
+		
+	}
+	
+	public void insert(Products product) {
+		
+	}
+	
+	public void update(Products product) {
+		
+	}
+}

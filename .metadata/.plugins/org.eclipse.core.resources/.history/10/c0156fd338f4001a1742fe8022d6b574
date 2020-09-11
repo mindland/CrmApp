@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trang chủ</title>
+</head>
+<body>
+	<div class="row bg-title">
+		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+			<h4 class="page-title">Dashboard</h4>
+		</div>
+		<ol class="breadcrumb">
+			<li><a href="#">Dashboard</a></li>
+		</ol>
+	</div>
+</body>
+</html>

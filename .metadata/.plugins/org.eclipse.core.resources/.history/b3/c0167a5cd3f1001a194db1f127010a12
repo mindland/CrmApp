@@ -1,0 +1,71 @@
+package com.myclass.dao;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.myclass.entity.Category;
+import com.myclass.jdbc.MysqlConnection;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.ResultSet;
+
+public class CategoryDao {
+	private List<Category> listCate = null; 
+	
+	public CategoryDao() {
+
+	}
+	
+	public List<Category> findAll(){
+		try {
+			// tao 1 connection den database 
+			Connection connection = MysqlConnection.getConnection(); 
+			String query = "SELECT * FROM categories"; 
+			
+			// tao 1 cai stament de truy van 
+			PreparedStatement statement = connection.prepareStatement(query);  // luu san duoi db
+			// ibatis MyBatis3
+			// thuc hien truy van va lay ve ket qua(ResultSet)
+			ResultSet resultSet = statement.executeQuery(); // cong ty lon viet jdbc thuan
+			
+			
+		} catch (Exception e) {
+			
+		}
+		
+		return null;
+	}
+	
+	public Category findById(String id) {
+		for (Category category : listCate) {
+			if (category.getId().equals(id)) {
+				return category;
+			}
+		}
+		return null;
+	}
+	
+	public void delete(String id) {
+		for (Category category : listCate) {
+			if (category.getId().equals(id)) {
+				listCate.remove(category);
+				break; 
+			}
+		}
+	}
+	
+	public void insert(Category cat) {
+		listCate.add(cat); 
+	}
+	
+	public void update(Category cat) {
+		for (Category category : listCate) {
+			if (category.getId().equals(cat.getId())) {
+				category.setName(cat.getName());
+				category.setDescription(cat.getDescription());
+				break; 
+			}
+		}
+	}
+	
+}

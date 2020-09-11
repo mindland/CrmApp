@@ -1,0 +1,47 @@
+package com.java.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.java.connection.MysqlConnection;
+import com.java.model.User;
+
+public class UserDao {
+	
+	public List<User> findAll(){
+		List<User> models = new LinkedList<User>(); // them xoa dung linked list toc do toi uu 
+		try {
+			// tao 1 connection den database 
+			Connection connection = MysqlConnection.getConnection(); 
+			String query = "SELECT * FROM crm_app.users"; 
+			// tao 1 cai stament de truy van 
+			PreparedStatement statement = connection.prepareStatement(query);  // luu san duoi db
+			// ibatis MyBatis3
+			// thuc hien truy van va lay ve ket qua(ResultSet)
+			ResultSet resultSet = statement.executeQuery(); // cong ty lon viet jdbc thuan
+			// resultset la 1 linked list
+			
+			while(resultSet.next()) {
+				User model = new User(); 
+				model.setId(resultSet.getInt("id"));
+				model.setEmail(resultSet.getNString("email"));
+				model.setPassword(resultSet.getNString("password"));
+				model.setFullname(resultSet.getNString("fullname"));
+				model.setAvatar(resultSet.getNString("avatar"));
+				model.setRole_id(resultSet.getInt("role_id"));
+				
+				models.add(model); 
+			}
+			
+			connection.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return models;
+	}
+}
