@@ -18,13 +18,13 @@
 		<div class="col-md-4 col-xs-12">
 			<div class="white-box">
 				<div class="user-bg">
-					<img width="100%" alt="user" src="plugins/images/large/img1.jpg">
+					<img width="100%" alt="user" src="/CrmApp/static/plugins/images/large/img1.jpg">
 					<div class="overlay-box">
 						<div class="user-content">
 							<a href="javascript:void(0)"><img
-								src="plugins/images/users/genu.jpg" class="thumb-lg img-circle"
+								src="/CrmApp/static/plugins/images/users/genu.jpg" class="thumb-lg img-circle"
 								alt="img"></a>
-							<h4 class="text-white">User Name</h4>
+							<h4 class="text-white">phongpham</h4>
 							<h5 class="text-white">info@myadmin.com</h5>
 						</div>
 					</div>
@@ -59,21 +59,23 @@
 				<form class="form-horizontal form-material">
 					<div class="form-group">
 						<label class="col-md-12">Full Name</label>
+						<span>${user.fullname}</span>
 					</div>
 					<div class="form-group">
 						<label for="example-email" class="col-md-12">Email</label>
+					 	<span>${user.email}</span>
 					</div>
 					<div class="form-group">
 						<label class="col-md-12">Password</label>
+						<span>${user.password}</span>
 					</div>
 					<div class="form-group">
 						<label class="col-md-12">Phone No</label>
+						<span>${user.phone}</span>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-12">Select Country</label>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-12">Select Country</label>
+						<label class="col-sm-12">Address</label>
+						<span>${user.address}</span>
 					</div>
 				</form>
 			</div>

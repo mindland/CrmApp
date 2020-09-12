@@ -28,6 +28,7 @@
 								<th>ID</th>
 								<th>Fullname</th>
 								<th>Email</th>
+								<th>phone</th>
 								<th>Role ID</th>
 								<th>Action</th>
 							</tr>
@@ -38,9 +39,11 @@
 									<td>${item.id }</td>
 									<td>${item.fullname }</td>
 									<td>${item.email }</td>
+									<td>${item.phone }</td>
 									<td>${item.role_id }</td>
-									<td><a href="#" class="btn btn-sm btn-primary">Sửa</a> <a
-										href="#" class="btn btn-sm btn-danger">Xóa</a> <a href= "<c:url value="/user/detail"/>"
+									<td><a href="<c:url value="/user/edit?id=${item.id}"/>" class="btn btn-sm btn-primary">Sửa</a> <a
+										href="<c:url value="/user/delete?id=${item.id}"/>" class="btn btn-sm btn-danger">Xóa</a> 
+										<a href= "<c:url value="/user/detail?id=${item.id}"/>"
 										class="btn btn-sm btn-info">Xem</a></td>
 								</tr>
 							</c:forEach>

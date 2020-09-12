@@ -26,7 +26,7 @@
 					<table class="table" id="example">
 						<thead>
 							<tr>
-								<th>STT</th>
+								<th>ID</th>
 								<th>Tên Quyền</th>
 								<th>Mô Tả</th>
 								<th>Hành Động</th>

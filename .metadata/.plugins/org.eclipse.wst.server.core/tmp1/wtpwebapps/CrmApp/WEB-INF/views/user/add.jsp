@@ -19,19 +19,20 @@
 		<div class="col-md-2 col-12"></div>
 		<div class="col-md-8 col-xs-12">
 			<div class="white-box">
-				<form class="form-horizontal form-material">
+				<form class="form-horizontal form-material"
+					action="<%=request.getContextPath()%>/user/add" method="POST">
 					<div class="form-group">
 						<label class="col-md-12">Full Name</label>
 						<div class="col-md-12">
 							<input type="text" placeholder="Johnathan Doe"
-								class="form-control form-control-line">
+								class="form-control form-control-line" name="fullname">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="example-email" class="col-md-12">Email</label>
 						<div class="col-md-12">
 							<input type="email" placeholder="johnathan@admin.com"
-								class="form-control form-control-line" name="example-email"
+								class="form-control form-control-line" name="email"
 								id="example-email">
 						</div>
 					</div>
@@ -39,38 +40,52 @@
 						<label class="col-md-12">Password</label>
 						<div class="col-md-12">
 							<input type="password" value="password"
-								class="form-control form-control-line">
+								class="form-control form-control-line" name="password">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-12">Phone No</label>
 						<div class="col-md-12">
 							<input type="text" placeholder="123 456 7890"
-								class="form-control form-control-line">
+								class="form-control form-control-line" name="phone">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-12">Select Country</label>
+						<label class="col-sm-12">Address</label>
+						<div class="col-md-12">
+							<input type="text"
+								placeholder="1 An Duong Vuong, Quan 5, Ho Chi Minh city"
+								class="form-control form-control-line" name="address">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-12">Avtar</label>
+						<div class="col-md-12">
+							<input type="text"
+								placeholder="anh"
+								class="form-control form-control-line" name="avatar" value="image">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-12">Select Role</label>
 						<div class="col-sm-12">
-							<select class="form-control form-control-line">
-								<option>London</option>
-								<option>India</option>
-								<option>Usa</option>
-								<option>Canada</option>
-								<option>Thailand</option>
+							<select class="form-control form-control-line" name="role">
+								<c:forEach var="item" items="${roles}">
+									<option value="${item.id }">${item.name }</option>
+								</c:forEach>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-12">
 							<button type="submit" class="btn btn-success">Add User</button>
-							<a href="<c:url value="/user" />" class="btn btn-primary">Quay lại</a>
+							<a href="<c:url value="/user" />" class="btn btn-primary">Quay
+								lại</a>
 						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div class="col-md-2 col-12"></div>
 	</div>
 </body>
 </html>
