@@ -1,16 +1,19 @@
 package com.java.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sound.midi.Soundbank;
 
 import com.java.dao.JobDao;
+import com.java.model.Job;
 
-@WebServlet(urlPatterns = {"/job", "/job/add", "/job/detail"})
+@WebServlet(urlPatterns = {"/job", "/job/add", "/job/detail", "/job/edit", "/job/delete"})
 public class JobController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -37,7 +40,15 @@ public class JobController extends HttpServlet{
 			req.getRequestDispatcher("/WEB-INF/views/job/add.jsp").forward(req, resp);
 			break; 
 		case "/job/delete": 
-			req.getRequestDispatcher("/WEB-INF/views/job/add.jsp").forward(req, resp);
+			String idDelete = req.getParameter("id");
+			jobDao.delete(idDelete);
+			resp.sendRedirect(req.getContextPath() + "/job");
+			break; 
+		case "/job/edit": 
+			String idEdit = req.getParameter("id"); 
+			Job model = jobDao.findById(idEdit);
+			req.setAttribute("job", model);
+			req.getRequestDispatcher("/WEB-INF/views/job/edit.jsp").forward(req, resp);
 			break; 
 		case "/job/detail": 
 			req.getRequestDispatcher("/WEB-INF/views/job/detail.jsp").forward(req, resp);
@@ -45,6 +56,31 @@ public class JobController extends HttpServlet{
 		default:
 			break; 
 		}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
 		
+		Job model = new Job(); 
+		model.setName(req.getParameter("name"));
+		model.setStart_date(Date.valueOf(req.getParameter("start_date")));
+		model.setEnd_date(Date.valueOf(req.getParameter("end_date")));
+	
+		String action = req.getServletPath(); 
+		
+		switch (action) {
+		case "/job/add": 
+			jobDao.insert(model); 
+			break; 
+		case "/job/edit": 
+			model.setId(Integer.valueOf(req.getParameter("id")));
+			jobDao.update(model); 
+			break; 
+		default:
+			break; 
+		}
+		resp.sendRedirect(req.getContextPath() + "/job");
 	}
 }

@@ -19,28 +19,28 @@
 		<div class="col-md-2 col-12"></div>
 		<div class="col-md-8 col-xs-12">
 			<div class="white-box">
-				<form class="form-horizontal form-material">
+				<form class="form-horizontal form-material" action="<%=request.getContextPath()%>/job/add" method="POST">
 					<div class="form-group">
 						<label class="col-md-12">Tên công việc</label>
 						<div class="col-md-12">
-							<input type="text" placeholder="Tên công việc"
+							<input type="text" placeholder="Tên công việc" name="name"
 								class="form-control form-control-line">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-12">Ngày bắt đầu</label>
 						<div class="col-md-12">
-							<input type="text" placeholder="dd/MM/yyyy"
+							<input type="date" name ="start_date" 
 								class="form-control form-control-line">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-12">Ngày kết thúc</label>
 						<div class="col-md-12">
-							<input type="text" placeholder="dd/MM/yyyy"
+							<input type="date" name="end_date"
 								class="form-control form-control-line">
 						</div>
-					</div>
+					</div>																								
 					<div class="form-group">
 						<div class="col-sm-12">
 							<button type="submit" class="btn btn-success">Lưu lại</button>
@@ -50,7 +50,6 @@
 				</form>
 			</div>
 		</div>
-		<div class="col-md-2 col-12"></div>
 	</div>
 	<!-- /.row -->
 </body>

@@ -11,7 +11,6 @@
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
 			<h4 class="page-title">Chi tiết công việc</h4>
 		</div>
-		<!-- /.col-lg-12 -->
 	</div>
 	<!-- BEGIN THỐNG KÊ -->
 	<div class="row">
@@ -83,5 +82,143 @@
 		<!-- /.col -->
 	</div>
 	<!-- END THỐNG KÊ -->
+
+	<!-- BEGIN DANH SÁCH CÔNG VIỆC -->
+	<div class="row">
+		<div class="col-xs-12">
+			<a href="#" class="group-title"> <img width="30"
+				src="/CrmApp/static/plugins/images/users/pawandeep.jpg" class="img-circle" /> <span>Pavan
+					kumar</span>
+			</a>
+		</div>
+		<div class="col-md-4">
+			<div class="white-box">
+				<h3 class="box-title">Chưa thực hiện</h3>
+				<div class="message-center">
+					<a href="#">
+						<div class="mail-contnet">
+							<h5>Pavan kumar</h5>
+							<span class="mail-desc">Just see the my admin!</span> <span
+								class="time">9:30 AM</span>
+						</div>
+					</a> <a href="#">
+						<div class="mail-contnet">
+							<h5>Sonu Nigam</h5>
+							<span class="mail-desc">I've sung a song! See you at</span> <span
+								class="time">9:10 AM</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="white-box">
+				<h3 class="box-title">Đang thực hiện</h3>
+				<div class="message-center">
+					<a href="#">
+						<div class="mail-contnet">
+							<h5>Pavan kumar</h5>
+							<span class="mail-desc">Just see the my admin!</span> <span
+								class="time">9:30 AM</span>
+						</div>
+					</a> <a href="#">
+						<div class="mail-contnet">
+							<h5>Sonu Nigam</h5>
+							<span class="mail-desc">I've sung a song! See you at</span> <span
+								class="time">9:10 AM</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="white-box">
+				<h3 class="box-title">Đã hoàn thành</h3>
+				<div class="message-center">
+					<a href="#">
+						<div class="mail-contnet">
+							<h5>Pavan kumar</h5>
+							<span class="mail-desc">Just see the my admin!</span> <span
+								class="time">9:30 AM</span>
+						</div>
+					</a> <a href="#">
+						<div class="mail-contnet">
+							<h5>Sonu Nigam</h5>
+							<span class="mail-desc">I've sung a song! See you at</span> <span
+								class="time">9:10 AM</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<a href="#" class="group-title"> <img width="30"
+				src="/CrmApp/static/plugins/images/users/pawandeep.jpg" class="img-circle" /> <span>Pavan
+					kumar</span>
+			</a>
+		</div>
+		<div class="col-md-4">
+			<div class="white-box">
+				<h3 class="box-title">Chưa thực hiện</h3>
+				<div class="message-center">
+					<a href="#">
+						<div class="mail-contnet">
+							<h5>Pavan kumar</h5>
+							<span class="mail-desc">Just see the my admin!</span> <span
+								class="time">9:30 AM</span>
+						</div>
+					</a> <a href="#">
+						<div class="mail-contnet">
+							<h5>Sonu Nigam</h5>
+							<span class="mail-desc">I've sung a song! See you at</span> <span
+								class="time">9:10 AM</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="white-box">
+				<h3 class="box-title">Đang thực hiện</h3>
+				<div class="message-center">
+					<a href="#">
+						<div class="mail-contnet">
+							<h5>Pavan kumar</h5>
+							<span class="mail-desc">Just see the my admin!</span> <span
+								class="time">9:30 AM</span>
+						</div>
+					</a> <a href="#">
+						<div class="mail-contnet">
+							<h5>Sonu Nigam</h5>
+							<span class="mail-desc">I've sung a song! See you at</span> <span
+								class="time">9:10 AM</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="white-box">
+				<h3 class="box-title">Đã hoàn thành</h3>
+				<div class="message-center">
+					<a href="#">
+						<div class="mail-contnet">
+							<h5>Pavan kumar</h5>
+							<span class="mail-desc">Just see the my admin!</span> <span
+								class="time">9:30 AM</span>
+						</div>
+					</a> <a href="#">
+						<div class="mail-contnet">
+							<h5>Sonu Nigam</h5>
+							<span class="mail-desc">I've sung a song! See you at</span> <span
+								class="time">9:10 AM</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

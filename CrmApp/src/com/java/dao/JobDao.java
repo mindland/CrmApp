@@ -39,4 +39,74 @@ public class JobDao {
 		
 		return models;
 	}
+	
+	public Job findById(String id) {
+		String query = "SELECT * FROM jobs WHERE id = ?" ;
+		try(Connection connection = MysqlConnection.getConnection()) {
+			PreparedStatement statement = connection.prepareStatement(query); 
+			statement.setString(1, id);
+			
+			ResultSet resultSet = statement.executeQuery(); 
+			while(resultSet.next()) {
+				Job model = new Job(); 
+				model.setId(resultSet.getInt("id"));
+				model.setName(resultSet.getString("name"));
+				model.setStart_date(resultSet.getDate("start_date"));
+				model.setEnd_date(resultSet.getDate("end_date"));
+				
+				return model; 
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new Job(); 
+	}
+	
+	public int delete(String id) {
+		String query = "DELETE FROM jobs WHERE id = ?" ;
+		try(Connection connection = MysqlConnection.getConnection()) {
+			PreparedStatement statement = connection.prepareStatement(query); 
+			statement.setString(1, id);
+			
+			return statement.executeUpdate(); 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0; 
+	}
+	
+	public int insert(Job model) {
+		String query = "INSERT INTO jobs (name,start_date,end_date) VALUES (?,?,?)" ;
+		try(Connection connection = MysqlConnection.getConnection()) {
+			PreparedStatement statement = connection.prepareStatement(query); 
+			statement.setString(1, model.getName());
+			statement.setDate(2, model.getStart_date());
+			statement.setDate(3, model.getEnd_date());
+			
+			return statement.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0; 
+	}
+	
+	public int update(Job model) {
+		String query = "UPDATE jobs SET name = ? , start_date = ?, end_date = ? WHERE id = ?" ;
+		try(Connection connection = MysqlConnection.getConnection()) {
+			PreparedStatement statement = connection.prepareStatement(query); 
+			statement.setString(1, model.getName());
+			statement.setDate(2, model.getStart_date());
+			statement.setDate(3, model.getEnd_date());
+			statement.setInt(4, model.getId());
+			
+			return statement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0; 
+	}
+	
 }

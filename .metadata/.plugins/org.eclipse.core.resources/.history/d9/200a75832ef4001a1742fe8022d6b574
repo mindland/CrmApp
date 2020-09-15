@@ -1,9 +1,0 @@
-package com.java.controller;
-
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-
-@WebServlet(urlPatterns = {"/user", "/user/add"})
-public class UserController extends HttpServlet{
-
-}

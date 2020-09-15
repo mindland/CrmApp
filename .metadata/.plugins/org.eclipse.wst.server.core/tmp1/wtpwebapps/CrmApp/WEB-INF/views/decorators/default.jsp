@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <link href="/CrmApp/static/css/style.css" rel="stylesheet">
 
 <!-- color CSS -->
-<link href="/CrmApp/static/css/colors/blue.css" id="theme"
+<link href="/CrmApp/static/css/colors/blue-dark.css" id="theme"
 	rel="stylesheet">
 <link rel="stylesheet" href="/CrmApp/static/css/custom.css">
 

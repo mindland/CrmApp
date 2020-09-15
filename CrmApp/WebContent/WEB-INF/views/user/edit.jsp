@@ -21,6 +21,7 @@
 			<div class="white-box">
 				<form class="form-horizontal form-material"
 					action="<%=request.getContextPath()%>/user/edit" method="POST">
+					<input type="hidden" name="id" value="${user.id}" />
 					<div class="form-group">
 						<label class="col-md-12">Full Name</label>
 						<div class="col-md-12">
@@ -53,17 +54,15 @@
 					<div class="form-group">
 						<label class="col-sm-12">Address</label>
 						<div class="col-md-12">
-							<input type="text"
-								value="${user.address }"
+							<input type="text" value="${user.address }"
 								class="form-control form-control-line" name="address">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-12">Avtar</label>
 						<div class="col-md-12">
-							<input type="text" placeholder="anh"
-								class="form-control form-control-line" name="avatar"
-								value="${user.avatar }">
+							<input type="text" class="form-control form-control-line"
+								name="avatar" value="${user.avatar }">
 						</div>
 					</div>
 					<div class="form-group">
@@ -78,7 +77,8 @@
 					</div>
 					<div class="form-group">
 						<div class="col-sm-12">
-							<button type="submit" class="btn btn-success">Update user</button>
+							<button type="submit" class="btn btn-success">Update
+								user</button>
 							<a href="<c:url value="/user" />" class="btn btn-primary">Quay
 								lại</a>
 						</div>

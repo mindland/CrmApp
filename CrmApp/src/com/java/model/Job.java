@@ -9,7 +9,6 @@ public class Job {
 	private Date start_date;
 	private Date end_date;
 	
-	
 	public Job() {
 		super();
 	}

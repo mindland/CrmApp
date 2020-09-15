@@ -38,8 +38,8 @@
 									<td>${ item.id }</td>
 									<td>${ item.name }</td>
 									<td>${ item.description }</td>
-									<td><a href="#" class="btn btn-sm btn-primary">Sửa</a> <a
-										href="#" class="btn btn-sm btn-danger">Xóa</a></td>
+									<td><a href="<%=request.getContextPath()%>/role/edit?id=${item.id}" class="btn btn-sm btn-primary">Sửa</a> <a
+										href="<%=request.getContextPath()%>/role/delete?id=${item.id}" class="btn btn-sm btn-danger">Xóa</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

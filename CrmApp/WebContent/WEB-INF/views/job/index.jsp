@@ -26,7 +26,7 @@
 					<table class="table" id="example">
 						<thead>
 							<tr>
-								<th>STT</th>
+								<th>ID</th>
 								<th>Tên Công Việc</th>
 								<th>Ngày Bắt Đầu</th>
 								<th>Ngày Kết Thúc</th>
@@ -40,9 +40,9 @@
 									<td>${item.name}</td>
 									<td>${item.dateFormat(item.start_date)}</td>
 									<td>${item.dateFormat(item.end_date)}</td>
-									<td><a href="#" class="btn btn-sm btn-primary">Sửa</a> <a
-										href="#" class="btn btn-sm btn-danger">Xóa</a> <a
-										href="<c:url value="/job/detail" />" class="btn btn-sm btn-info">Xem</a>
+									<td><a href="<c:url value="/job/edit?id=${item.id}" />" class="btn btn-sm btn-primary">Sửa</a> <a
+										href="<c:url value="/job/delete?id=${item.id}" />" class="btn btn-sm btn-danger">Xóa</a> <a
+										href="<c:url value="/job/detail?id=${item.id}" />" class="btn btn-sm btn-info">Xem</a>
 									</td>
 								</tr>
 							</c:forEach>

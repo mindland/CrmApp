@@ -7,23 +7,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.java.connection.MysqlConnection;
+import com.java.dto.UserDto;
 import com.java.model.User;
 
 public class UserDao {
 	
-	public List<User> findAll(){
-		List<User> models = new LinkedList<User>(); // them xoa dung linked list toc do toi uu 
+	public List<UserDto> findAll(){
+		List<UserDto> models = new LinkedList<UserDto>(); // them xoa dung linked list toc do toi uu 
 		try {
 			
 			Connection connection = MysqlConnection.getConnection(); 
-			String query = "SELECT * FROM crm_app.users"; 
+			String query = "SELECT * FROM users as u JOIN roles as r ON u.role_id = r.id"; 
 		
 			PreparedStatement statement = connection.prepareStatement(query); 
 		
 			ResultSet resultSet = statement.executeQuery(); 
 			
 			while(resultSet.next()) {
-				User model = new User(); 
+				UserDto model = new UserDto(); 	
 				model.setId(resultSet.getInt("id"));
 				model.setEmail(resultSet.getString("email"));
 				model.setPassword(resultSet.getString("password"));
@@ -31,7 +32,7 @@ public class UserDao {
 				model.setPhone(resultSet.getString("phone"));
 				model.setAddress(resultSet.getString("address"));
 				model.setAvatar(resultSet.getString("avatar"));
-				model.setRole_id(resultSet.getInt("role_id"));
+				model.setRoleName(resultSet.getString("r.name"));
 				
 				models.add(model); 
 			}
@@ -118,7 +119,8 @@ public class UserDao {
 			statement.setInt(7, model.getRole_id());
 			statement.setInt(8, model.getId());
 			
-			return statement.executeUpdate(); 
+			return statement.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

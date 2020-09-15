@@ -29,7 +29,7 @@
 								<th>Fullname</th>
 								<th>Email</th>
 								<th>phone</th>
-								<th>Role ID</th>
+								<th>Role</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -40,7 +40,7 @@
 									<td>${item.fullname }</td>
 									<td>${item.email }</td>
 									<td>${item.phone }</td>
-									<td>${item.role_id }</td>
+									<td>${item.roleName }</td>
 									<td><a href="<c:url value="/user/edit?id=${item.id}"/>" class="btn btn-sm btn-primary">Sửa</a> <a
 										href="<c:url value="/user/delete?id=${item.id}"/>" class="btn btn-sm btn-danger">Xóa</a> 
 										<a href= "<c:url value="/user/detail?id=${item.id}"/>"

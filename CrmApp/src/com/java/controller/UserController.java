@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.java.dao.RoleDao;
 import com.java.dao.UserDao;
 import com.java.model.User;
-import com.sun.source.tree.Tree;
 
 @WebServlet(urlPatterns = {"/user", "/user/add", "/user/detail", "/user/delete", "/user/edit"})
 public class UserController extends HttpServlet{
@@ -84,16 +83,12 @@ public class UserController extends HttpServlet{
 		String action = req.getServletPath(); 
 		switch (action) {
 			case "/user/edit": 
+				model.setId(Integer.valueOf(req.getParameter("id")));
 				userDao.update(model);
 				break; 
 			case "/user/add": 
-				if(userDao.insert(model) > 0){
-					System.out.println("insert thanh cong");
-				}
-				else {
-					System.out.println("insert that bai");
-				}
-				break; 
+				userDao.insert(model);
+				break;			
 			default:
 				break; 
 		}

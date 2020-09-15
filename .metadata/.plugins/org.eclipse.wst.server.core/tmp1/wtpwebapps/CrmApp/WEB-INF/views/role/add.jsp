@@ -18,25 +18,25 @@
 		<div class="col-md-2 col-12"></div>
 		<div class="col-md-8 col-xs-12">
 			<div class="white-box">
-				<form class="form-horizontal form-material">
+				<form class="form-horizontal form-material" action="<%=request.getContextPath()%>/role/add" method="POST">
 					<div class="form-group">
 						<label class="col-md-12">Tên quyền</label>
 						<div class="col-md-12">
 							<input type="text" placeholder="Tên quyền"
-								class="form-control form-control-line" />
+								class="form-control form-control-line" name="name"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-12">Mô tả</label>
 						<div class="col-md-12">
 							<input type="text" placeholder="Mô tả"
-								class="form-control form-control-line" />
+								class="form-control form-control-line" name="description" />
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-12">
 							<button type="submit" class="btn btn-success">Add Role</button>
-							<a href="role-table.html" class="btn btn-primary">Quay lại</a>
+							<a href="<%=request.getContextPath()%>/role" class="btn btn-primary">Quay lại</a>
 						</div>
 					</div>
 				</form>
