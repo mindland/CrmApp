@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Sửa công việc</title>
+<title>Sửa dự án</title>
 </head>
 <body>
 	<div class="row bg-title">
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-			<h4 class="page-title">Sửa công việc</h4>
+			<h4 class="page-title">Sửa dự án</h4>
 		</div>
 	</div>
 	<!-- /.row -->
@@ -23,7 +23,7 @@
 					action="<%=request.getContextPath()%>/job/edit" method="POST">
 					<input type="hidden" value="${job.id }" name="id" >
 					<div class="form-group">
-						<label class="col-md-12">Tên công việc</label>
+						<label class="col-md-12">Tên Dự Án</label>
 						<div class="col-md-12">
 							<input type="text"  name="name" value="${job.name }"
 								class="form-control form-control-line">

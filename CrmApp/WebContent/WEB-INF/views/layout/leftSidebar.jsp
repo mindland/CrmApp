@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="navbar-default sidebar" role="navigation">
 	<div class="sidebar-nav navbar-collapse slimscrollsidebar">
@@ -16,8 +16,10 @@
 					class="hide-menu">Quyền</span></a></li>
 			<li><a href="<c:url value="/job"/>" class="waves-effect"><i
 					class="fa fa-table fa-fw" aria-hidden="true"></i><span
+					class="hide-menu">Dự án</span></a></li>
+			<li><a href="<c:url value="/task"/>" class="waves-effect"><i
+					class="fa fa-table fa-fw" aria-hidden="true"></i><span
 					class="hide-menu">Công việc</span></a></li>
-
 		</ul>
 	</div>
 </div>

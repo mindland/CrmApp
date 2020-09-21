@@ -32,6 +32,7 @@ public class UserDao {
 				model.setPhone(resultSet.getString("phone"));
 				model.setAddress(resultSet.getString("address"));
 				model.setAvatar(resultSet.getString("avatar"));
+				model.setRole_id(resultSet.getInt("role_id"));
 				model.setRoleName(resultSet.getString("r.name"));
 				
 				models.add(model); 
@@ -78,15 +79,16 @@ public class UserDao {
 		return 0; 
 	}
 	
-	public User findById(String id) {
-		String query =  "SELECT * FROM users WHERE id = ?";
+	public UserDto findById(String id) {
+		String query = "SELECT * FROM users as u JOIN roles as r ON u.role_id = r.id WHERE u.id = ?";
 		try(Connection connection = MysqlConnection.getConnection()) {
 			PreparedStatement statement = connection.prepareStatement(query); 
 			statement.setString(1, id);
 			ResultSet resultSet = statement.executeQuery(); 
 			
 			while(resultSet.next()) {
-				User model = new User(); 
+				UserDto model = new UserDto(); 
+				
 				model.setId(resultSet.getInt("id"));
 				model.setEmail(resultSet.getString("email"));
 				model.setPassword(resultSet.getString("password"));
@@ -95,6 +97,7 @@ public class UserDao {
 				model.setAddress(resultSet.getString("address"));
 				model.setAvatar(resultSet.getString("avatar"));
 				model.setRole_id(resultSet.getInt("role_id"));
+				model.setRoleName(resultSet.getString("r.name"));
 				
 				return model; 
 			}
@@ -102,7 +105,7 @@ public class UserDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new User() ; 
+		return new UserDto() ; 
 	}
 	
 	public int update(User model) {

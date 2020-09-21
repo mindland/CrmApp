@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Job"/>
+		<item key="selection" value="JobService"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="User"/>
+			<item value="JobDao"/>
 			<item value="Role"/>
+			<item value="RoleDto"/>
+			<item value="RoleDao"/>
+			<item value="Job"/>
+			<item value="User"/>
 			<item value="html"/>
 			<item value="mapping"/>
 			<item value="8080]"/>
@@ -20,7 +24,11 @@
 			<item value="port"/>
 		</list>
 		<list key="replacehistory">
+			<item value="JobService"/>
 			<item value="Job"/>
+			<item value="JobDto"/>
+			<item value="JobDao"/>
+			<item value="Task"/>
 			<item value="Role"/>
 			<item value="product"/>
 			<item value="Products"/>

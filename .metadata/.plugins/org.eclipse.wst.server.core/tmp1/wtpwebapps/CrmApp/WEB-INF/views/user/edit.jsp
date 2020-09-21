@@ -59,16 +59,17 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-12">Avtar</label>
+						<label class="col-sm-12">Avtar</label>	
 						<div class="col-md-12">
 							<input type="text" class="form-control form-control-line"
-								name="avatar" value="${user.avatar }">
+								name="avatar" value="${ user.avatar }">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-12">Select Role</label>
 						<div class="col-sm-12">
 							<select class="form-control form-control-line" name="role">
+							<option value="${ user.role_id }" selected hidden>${ user.roleName }</option>
 								<c:forEach var="item" items="${roles}">
 									<option value="${item.id }">${item.name }</option>
 								</c:forEach>

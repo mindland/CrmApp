@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Danh sách công việc</title>
+<title>Danh sách dự án</title>
 </head>
 <body>
 	<div class="row bg-title">
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-			<h4 class="page-title">Danh sách công việc</h4>
+			<h4 class="page-title">Danh sách dự án</h4>
 		</div>
 		<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12 text-right">
 			<a href="<c:url value="/job/add" />" class="btn btn-sm btn-success">Thêm
@@ -27,7 +27,7 @@
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>Tên Công Việc</th>
+								<th>Tên Dự Án</th>
 								<th>Ngày Bắt Đầu</th>
 								<th>Ngày Kết Thúc</th>
 								<th>Hành Động</th>
@@ -38,8 +38,8 @@
 								<tr>
 									<td>${item.id}</td>
 									<td>${item.name}</td>
-									<td>${item.dateFormat(item.start_date)}</td>
-									<td>${item.dateFormat(item.end_date)}</td>
+									<td>${item.start_date}</td>
+									<td>${item.end_date}</td>
 									<td><a href="<c:url value="/job/edit?id=${item.id}" />" class="btn btn-sm btn-primary">Sửa</a> <a
 										href="<c:url value="/job/delete?id=${item.id}" />" class="btn btn-sm btn-danger">Xóa</a> <a
 										href="<c:url value="/job/detail?id=${item.id}" />" class="btn btn-sm btn-info">Xem</a>

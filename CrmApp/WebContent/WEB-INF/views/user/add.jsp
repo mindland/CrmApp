@@ -24,14 +24,14 @@
 					<div class="form-group">
 						<label class="col-md-12">Full Name</label>
 						<div class="col-md-12">
-							<input type="text" placeholder="Johnathan Doe"
+							<input type="text" placeholder="Tên thành viên"
 								class="form-control form-control-line" name="fullname">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="example-email" class="col-md-12">Email</label>
 						<div class="col-md-12">
-							<input type="email" placeholder="johnathan@admin.com"
+							<input type="email" placeholder="Nhập email"
 								class="form-control form-control-line" name="email"
 								id="example-email">
 						</div>
@@ -46,24 +46,23 @@
 					<div class="form-group">
 						<label class="col-md-12">Phone No</label>
 						<div class="col-md-12">
-							<input type="text" placeholder="123 456 7890"
+							<input type="text" placeholder="Nhập số điện thoại"
 								class="form-control form-control-line" name="phone">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-12">Address</label>
 						<div class="col-md-12">
-							<input type="text"
-								placeholder="1 An Duong Vuong, Quan 5, Ho Chi Minh city"
+							<input type="text" placeholder="Nhập địa chỉ"
 								class="form-control form-control-line" name="address">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-12">Avtar</label>
 						<div class="col-md-12">
-							<input type="text"
-								placeholder="anh"
-								class="form-control form-control-line" name="avatar" value="image">
+							<input type="text" placeholder="anh"
+								class="form-control form-control-line" name="avatar"
+								value="image">
 						</div>
 					</div>
 					<div class="form-group">

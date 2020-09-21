@@ -31,7 +31,7 @@
 					<div class="form-group">
 						<label class="col-md-12">Mô tả</label>
 						<div class="col-md-12">
-							<input type="text" value="${role.description}"
+							<input type="text" value="${role.desc}"
 								class="form-control form-control-line" name="description" />
 						</div>
 					</div>

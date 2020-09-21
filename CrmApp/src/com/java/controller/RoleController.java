@@ -8,18 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.java.dao.RoleDao;
-import com.java.model.Role;
+import com.java.dto.RoleDto;
+import com.java.service.RoleService;
+
 
 @WebServlet(urlPatterns = {"/role", "/role/add", "/role/delete", "/role/edit"})
 public class RoleController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
-	private RoleDao roleDao = null; 
+	private RoleService roleService = null; 
 	
 	@Override
 	public void init() throws ServletException {
-		roleDao = new RoleDao(); 
+		roleService = new RoleService(); 
 	}
 
 	@Override
@@ -30,21 +31,21 @@ public class RoleController extends HttpServlet{
 		String action = req.getServletPath(); 
 		switch (action) {
 		case "/role": 
-			req.setAttribute("roles", roleDao.findAll());
-			req.getRequestDispatcher("/WEB-INF/views/role/index.jsp").	forward(req, resp);
+			req.setAttribute("roles", roleService.findAll());
+			req.getRequestDispatcher("/WEB-INF/views/role/index.jsp").forward(req, resp);
 			break;
 		case "/role/add": 
 			req.getRequestDispatcher("/WEB-INF/views/role/add.jsp").forward(req, resp);
 			break;
 		case "/role/edit": 
 			String idEdit =  req.getParameter("id");
-			Role model = roleDao.findById(idEdit); 
+			RoleDto model = roleService.findById(idEdit); 
 			req.setAttribute("role", model);
 			req.getRequestDispatcher("/WEB-INF/views/role/edit.jsp").forward(req, resp);
 			break;
 		case "/role/delete": 
 			String idDelete = req.getParameter("id");
-			roleDao.delete(idDelete);
+			roleService.deleteById(idDelete);
 			resp.sendRedirect(req.getContextPath() + "/role");
 			break;
 		default:
@@ -57,18 +58,18 @@ public class RoleController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		Role model = new Role(); 
+		RoleDto model = new RoleDto(); 
 		model.setName(req.getParameter("name"));
-		model.setDescription(req.getParameter("description"));
+		model.setDesc(req.getParameter("description"));
 		
 		String action = req.getServletPath(); 
 		switch (action) {
 			case "/role/add": 
-				roleDao.insert(model);
+				roleService.insert(model);
 				break; 
 			case "/role/edit":
 				model.setId(Integer.valueOf(req.getParameter("id")));	
-				roleDao.update(model); 
+				roleService.update(model); 
 				break; 
 			default:
 				break; 

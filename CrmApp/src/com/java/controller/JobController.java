@@ -8,22 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sound.midi.Soundbank;
 
-import com.java.dao.JobDao;
-import com.java.model.Job;
+import com.java.dto.JobDto;
+import com.java.service.JobService;
 
 @WebServlet(urlPatterns = {"/job", "/job/add", "/job/detail", "/job/edit", "/job/delete"})
 public class JobController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
-	private JobDao jobDao = null; 
+	private JobService jobService = null; 
 	
 	@Override
 	public void init() throws ServletException {
-		jobDao = new JobDao(); 
+		jobService = new JobService(); 
 	}
-	
+		
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -33,7 +32,7 @@ public class JobController extends HttpServlet{
 		
 		switch (action) {
 		case "/job": 
-			req.setAttribute("jobs",jobDao.findAll());
+			req.setAttribute("jobs",jobService.findAll());
 			req.getRequestDispatcher("/WEB-INF/views/job/index.jsp").forward(req, resp);
 			break; 
 		case "/job/add": 
@@ -41,12 +40,12 @@ public class JobController extends HttpServlet{
 			break; 
 		case "/job/delete": 
 			String idDelete = req.getParameter("id");
-			jobDao.delete(idDelete);
+			jobService.delete(idDelete);
 			resp.sendRedirect(req.getContextPath() + "/job");
 			break; 
 		case "/job/edit": 
 			String idEdit = req.getParameter("id"); 
-			Job model = jobDao.findById(idEdit);
+			JobDto model = jobService.findById(idEdit);
 			req.setAttribute("job", model);
 			req.getRequestDispatcher("/WEB-INF/views/job/edit.jsp").forward(req, resp);
 			break; 
@@ -63,7 +62,7 @@ public class JobController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		Job model = new Job(); 
+		JobDto model = new JobDto(); 
 		model.setName(req.getParameter("name"));
 		model.setStart_date(Date.valueOf(req.getParameter("start_date")));
 		model.setEnd_date(Date.valueOf(req.getParameter("end_date")));
@@ -72,11 +71,11 @@ public class JobController extends HttpServlet{
 		
 		switch (action) {
 		case "/job/add": 
-			jobDao.insert(model); 
+			jobService.insert(model); 
 			break; 
 		case "/job/edit": 
 			model.setId(Integer.valueOf(req.getParameter("id")));
-			jobDao.update(model); 
+			jobService.update(model); 
 			break; 
 		default:
 			break; 

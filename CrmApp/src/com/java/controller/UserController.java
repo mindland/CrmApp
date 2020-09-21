@@ -8,21 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.java.dao.RoleDao;
-import com.java.dao.UserDao;
-import com.java.model.User;
+import com.java.dto.UserDto;
+import com.java.service.RoleService;
+import com.java.service.UserService;
 
 @WebServlet(urlPatterns = {"/user", "/user/add", "/user/detail", "/user/delete", "/user/edit"})
 public class UserController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
-	private UserDao userDao = null; 
-	private RoleDao roleDao = null;
+	private UserService userService = null; 
+	private RoleService roleService = null;
 	
 	@Override
 	public void init() throws ServletException {
-		userDao = new UserDao(); 
-		roleDao = new RoleDao(); 
+		userService = new UserService(); 
+		roleService = new RoleService(); 
 	}
 	
 	@Override
@@ -34,30 +34,28 @@ public class UserController extends HttpServlet{
 		
 		switch (action) {
 		case "/user": 
-			req.setAttribute("users", userDao.findAll());
+			req.setAttribute("users", userService.findAll());
 			req.getRequestDispatcher("/WEB-INF/views/user/index.jsp").forward(req, resp);
 			break; 
 		case "/user/add": 
-			req.setAttribute("roles", roleDao.findAll());
+			req.setAttribute("roles", roleService.findAll());
 			req.getRequestDispatcher("/WEB-INF/views/user/add.jsp").forward(req, resp);
 			break; 
 		case "/user/edit": 
 			String idEdit = req.getParameter("id"); 
-			User model = userDao.findById(idEdit); 
+			UserDto model = userService.findById(idEdit); 
 			req.setAttribute("user", model);
-			req.setAttribute("roles", roleDao.findAll());
+			req.setAttribute("roles", roleService.findAll());
 			req.getRequestDispatcher("/WEB-INF/views/user/edit.jsp").forward(req, resp);
 			break; 
 		case "/user/delete":
-			String id = req.getParameter("id"); 
-			if(userDao.delete(id) > 0) {
-				System.out.println("delete thanh cong!");
-			}
+			String idDel = req.getParameter("id"); 
+			userService.delete(idDel); 
 			resp.sendRedirect(req.getContextPath() + "/user");
 			break; 
 		case "/user/detail": 
 			String idDetail = req.getParameter("id"); 
-			User user = userDao.findById(idDetail); 
+			UserDto user = userService.findById(idDetail); 
 			req.setAttribute("user", user);
 			req.getRequestDispatcher("/WEB-INF/views/user/detail.jsp").forward(req, resp);
 			break; 	
@@ -71,7 +69,7 @@ public class UserController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		
-		User model = new User(); 
+		UserDto model = new UserDto(); 
 		model.setEmail(req.getParameter("email"));
 		model.setPassword(req.getParameter("password"));
 		model.setFullname(req.getParameter("fullname"));
@@ -79,15 +77,16 @@ public class UserController extends HttpServlet{
 		model.setAddress(req.getParameter("address"));
 		model.setAvatar(req.getParameter("avatar"));
 		model.setRole_id(Integer.valueOf(req.getParameter("role")));
+		model.setRoleName(req.getParameter("role"));
 		
 		String action = req.getServletPath(); 
 		switch (action) {
 			case "/user/edit": 
 				model.setId(Integer.valueOf(req.getParameter("id")));
-				userDao.update(model);
+				userService.update(model);
 				break; 
 			case "/user/add": 
-				userDao.insert(model);
+				userService.insert(model);
 				break;			
 			default:
 				break; 

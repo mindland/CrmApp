@@ -37,7 +37,7 @@
 								<tr>
 									<td>${ item.id }</td>
 									<td>${ item.name }</td>
-									<td>${ item.description }</td>
+									<td>${ item.desc }</td>
 									<td><a href="<%=request.getContextPath()%>/role/edit?id=${item.id}" class="btn btn-sm btn-primary">Sửa</a> <a
 										href="<%=request.getContextPath()%>/role/delete?id=${item.id}" class="btn btn-sm btn-danger">Xóa</a></td>
 								</tr>

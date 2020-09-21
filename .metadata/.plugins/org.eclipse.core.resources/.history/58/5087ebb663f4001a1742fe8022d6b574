@@ -1,8 +1,0 @@
-package com.java.controller;
-
-import javax.servlet.annotation.WebServlet;
-
-
-public class TaskController {
-	
-}

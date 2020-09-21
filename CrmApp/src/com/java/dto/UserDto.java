@@ -8,10 +8,11 @@ public class UserDto {
 	private String phone; 	
 	private String address; 
 	private String avatar; 
+	private int role_id;
 	private String roleName;
 	
 	public UserDto(int id, String email, String password, String fullname, String phone, String address, String avatar,
-			String roleName) {
+			int role_id, String roleName) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -20,12 +21,22 @@ public class UserDto {
 		this.phone = phone;
 		this.address = address;
 		this.avatar = avatar;
+		this.role_id = role_id;
 		this.roleName = roleName;
 	}
-	
+
+	public int getRole_id() {
+		return role_id;
+	}
+
+	public void setRole_id(int role_id) {
+		this.role_id = role_id;
+	}
+
 	public UserDto() {
 		super();
 	}
+	
 	public int getId() {
 		return id;
 	}

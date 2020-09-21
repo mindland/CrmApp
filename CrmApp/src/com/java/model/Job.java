@@ -48,7 +48,7 @@ public class Job {
 	
 	public String dateFormat(Date date) {
 		SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
-		String stringDate= DateFor.format(date);
+		String stringDate= DateFor.format(date);	
 		return stringDate; 
 	}
 }
