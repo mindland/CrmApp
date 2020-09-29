@@ -129,4 +129,35 @@ public class UserDao {
 		}
 		return 0; 
 	}
+	
+	public UserDto findByEmail(String email) {
+		String query = "SELECT * FROM users as u JOIN roles as r ON u.role_id = r.id WHERE u.email = ? ";
+		try(Connection connection = MysqlConnection.getConnection()) {
+			PreparedStatement statement = connection.prepareStatement(query); 
+			statement.setString(1, email);
+			
+			ResultSet resultSet = statement.executeQuery(); 
+			
+			while(resultSet.next()) {
+				UserDto model = new UserDto(); 
+				
+				model.setId(resultSet.getInt("id"));
+				model.setEmail(resultSet.getString("email"));
+				model.setPassword(resultSet.getString("password"));
+				model.setFullname(resultSet.getString("fullname"));
+				model.setPhone(resultSet.getString("phone"));
+				model.setAddress(resultSet.getString("address"));
+				model.setAvatar(resultSet.getString("avatar"));
+				model.setRole_id(resultSet.getInt("role_id"));
+				model.setRoleName(resultSet.getString("r.name"));
+				
+				return model; 
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 
 <nav class="navbar navbar-default navbar-static-top m-b-0">
 	<div class="navbar-header">
@@ -21,10 +22,21 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-top-links navbar-right pull-right">
-			<li><a class="profile-pic" href="#"> <img
-					src="/CrmApp/static/plugins/images/users/varun.jpg" alt="user-img"
-					width="36" class="img-circle"><b class="hidden-xs">Steave</b>
-			</a></li>
+			<li>
+				<div class="dropdown">
+					<a class="profile-pic dropdown-toggle" data-toggle="dropdown"
+						href="#"> <img src="/CrmApp/static/plugins/images/users/varun.jpg"
+						alt="user-img" width="36" class="img-circle" /> <b
+						class="hidden-xs">Cybersoft</b>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="profile.html">Thông tin cá nhân</a></li>
+						<li><a href="#">Thống kê công việc</a></li>
+						<li class="divider"></li>
+						<li><a href= "<c:url value="/logout" />" >Đăng xuất</a></li>
+					</ul>
+				</div>
+			</li>
 		</ul>
 	</div>
 	<!-- /.navbar-header -->

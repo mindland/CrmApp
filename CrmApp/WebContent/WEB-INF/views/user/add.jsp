@@ -39,7 +39,7 @@
 					<div class="form-group">
 						<label class="col-md-12">Password</label>
 						<div class="col-md-12">
-							<input type="password" value="password"
+							<input type="password" placeholder="Nhập mật khâủ"
 								class="form-control form-control-line" name="password">
 						</div>
 					</div>
@@ -58,7 +58,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-12">Avtar</label>
+						<label class="col-sm-12">Avatar</label>
 						<div class="col-md-12">
 							<input type="text" placeholder="anh"
 								class="form-control form-control-line" name="avatar"

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode"/>
-    <fullyQualifiedTypeName name="java.lang.IllegalAccessException"/>
-    <fullyQualifiedTypeName name="com.sun.tools.javac.jvm.PoolConstant.LoadableConstant"/>
     <fullyQualifiedTypeName name="java.lang.invoke.StringConcatFactory"/>
     <fullyQualifiedTypeName name="javax.management.relation.InvalidRelationTypeException"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
@@ -14,9 +11,6 @@
     <fullyQualifiedTypeName name="org.apache.tomcat.util.security.MD5Encoder"/>
     <fullyQualifiedTypeName name="sun.security.ssl.KAKeyDerivation"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.resources.compiler"/>
-    <fullyQualifiedTypeName name="com.java.constants.UrlConstants"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
-    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="com.java.controller.TaskController"/>
     <fullyQualifiedTypeName name="java.lang.Iterable"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.xml.internal.security.keys.keyresolver.implementations.PrivateKeyResolver"/>
@@ -47,11 +41,9 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.java.dao.TaskDao"/>
     <fullyQualifiedTypeName name="com.java.service.JobService"/>
-    <fullyQualifiedTypeName name="com.java.service.UserService"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.FakedTrackingVariable"/>
     <fullyQualifiedTypeName name="javax.sound.midi.Soundbank"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.xerces.internal.dom.DeferredCDATASectionImpl"/>
     <fullyQualifiedTypeName name="com.java.service.TaskService"/>
     <fullyQualifiedTypeName name="com.java.model.Task"/>
@@ -59,5 +51,13 @@
     <fullyQualifiedTypeName name="com.sun.tools.classfile.StackMap_attribute.stack_map_frame"/>
     <fullyQualifiedTypeName name="com.java.dto.TaskDto"/>
     <fullyQualifiedTypeName name="com.java.dao.StatusDao"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpServlet"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+    <fullyQualifiedTypeName name="org.mindrot.jbcrypt.BCrypt"/>
+    <fullyQualifiedTypeName name="com.java.service.UserService"/>
     <fullyQualifiedTypeName name="com.java.dto.UserDto"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.java.constants.UrlConstants"/>
+    <fullyQualifiedTypeName name="sun.jvm.hotspot.oops.ReturnTypeEntry"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 </qualifiedTypeNameHistroy>

@@ -38,8 +38,8 @@
 								<tr>
 									<td>${item.id}</td>
 									<td>${item.name}</td>
-									<td>${item.start_date}</td>
-									<td>${item.end_date}</td>
+									<td class="dateId">${item.start_date}</td>
+									<td class="dateId">${item.end_date}</td>
 									<td><a href="<c:url value="/job/edit?id=${item.id}" />" class="btn btn-sm btn-primary">Sửa</a> <a
 										href="<c:url value="/job/delete?id=${item.id}" />" class="btn btn-sm btn-danger">Xóa</a> <a
 										href="<c:url value="/job/detail?id=${item.id}" />" class="btn btn-sm btn-info">Xem</a>

@@ -34,7 +34,7 @@ public class UserDto {
 	}
 
 	public UserDto() {
-		super();
+	
 	}
 	
 	public int getId() {

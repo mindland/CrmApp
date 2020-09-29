@@ -42,8 +42,8 @@
 									<td>${item.name }</td>
 									<td>${item.job_name }</td>
 									<td>${item.user_name }</td>
-									<td>${item.start_date }</td>
-									<td>${item.end_date }</td>
+									<td class="dateId">${item.start_date }</td>
+									<td class="dateId">${item.end_date }</td>
 									<td>${item.status_name }</td>
 									<td><a href="<c:url value="/task/edit?id=${item.id}"/>" class="btn btn-sm btn-primary">Sửa</a> <a
 										href='<c:url value="/task/delete?id=${item.id}"/>' class="btn btn-sm btn-danger">Xóa</a> <a href="#"

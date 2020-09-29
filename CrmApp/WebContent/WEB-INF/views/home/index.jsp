@@ -11,9 +11,6 @@
 		<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
 			<h4 class="page-title">Dashboard</h4>
 		</div>
-		<ol class="breadcrumb">
-			<li><a href="#">Dashboard</a></li>
-		</ol>
 	</div>
 	<!-- /.col-lg-12 -->
 	</div>
@@ -25,7 +22,7 @@
 				<div class="col-in row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<i data-icon="E" class="linea-icon linea-basic"></i>
-						<h5 class="text-muted vb">MYNEW CLIENTS</h5>
+						<h5 class="text-muted vb">CHƯA BẮT ĐẦU</h5>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<h3 class="counter text-right m-t-15 text-danger">23</h3>
@@ -49,7 +46,7 @@
 				<div class="col-in row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
-						<h5 class="text-muted vb">NEW PROJECTS</h5>
+						<h5 class="text-muted vb">ĐANG THỰC HIỆN</h5>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<h3 class="counter text-right m-t-15 text-megna">169</h3>
@@ -73,7 +70,7 @@
 				<div class="col-in row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
-						<h5 class="text-muted vb">NEW INVOICES</h5>
+						<h5 class="text-muted vb">ĐÃ HOÀN THÀNH</h5>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<h3 class="counter text-right m-t-15 text-primary">157</h3>
