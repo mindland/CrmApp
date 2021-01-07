@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>THÊM MỚI QUYỀN</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-4 m-auto">
+				<h3 class="mb-3">THÊM MỚI QUYỀN</h3>
+				<p class="text-center text-danger"></p>
+				<form th:action='@{/role/edit}' method="post" th:object=${role}>
+				  <div class="form-group">
+				    <label>ID</label>
+				    <input type="text" class="form-control" readonly th:field="*{id}" />
+				  </div>
+				  <div class="form-group">
+				    <label>Role name</label>
+				    <input type="text" class="form-control" th:field="*{name}" />
+				  </div>
+				  <div class="form-group">
+				    <label>Description</label>
+				    <input type="text" class="form-control" th:field="*{desc}"/>
+				  </div>
+				  <button class="btn btn-primary">Cập nhật</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

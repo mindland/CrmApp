@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.java.connection.MysqlConnection;
+import com.java.dto.JobDto;
 import com.java.dto.TaskDto;
+import com.java.dto.UserDto;
 import com.java.model.Task;
 
 public class TaskDao {
@@ -138,6 +140,122 @@ public class TaskDao {
 			e.printStackTrace();
 		}
 		return 0; 
+	}
+	
+	public List<TaskDto> findByUserId(String id){
+		List<TaskDto> models = new LinkedList<TaskDto>();
+		try(Connection connection = MysqlConnection.getConnection()){
+			
+			
+			String query = "SELECT t.id, t.name, t.start_date, t.end_date, t.user_id, t.job_id, t.status_id, j.name, st.name,  u.fullname\r\n" + 
+					"from tasks as t \r\n" + 
+					"join users as u on t.user_id = u.id\r\n" + 
+					"join jobs as j on t.job_id = j.id\r\n" + 
+					"join status as st on t.status_id = st.id "
+					+ "WHERE u.id = ? "; 
+		
+			PreparedStatement statement = connection.prepareStatement(query); 
+			statement.setString(1, id);
+			
+			ResultSet resultSet = statement.executeQuery(); 
+			
+			while(resultSet.next()) {
+				TaskDto model = new TaskDto(); 	
+				model.setId(resultSet.getInt("id"));
+				model.setName(resultSet.getString("name"));
+				model.setStart_date(resultSet.getDate("start_date"));
+				model.setEnd_date(resultSet.getDate("end_date"));
+				model.setUser_id(resultSet.getInt("t.user_id"));
+				model.setJob_id(resultSet.getInt("t.job_id"));
+				model.setStatus_id(resultSet.getInt("t.status_id"));
+				model.setUser_name(resultSet.getString("u.fullname"));
+				model.setJob_name(resultSet.getString("j.name"));
+				model.setStatus_name(resultSet.getString("st.name"));
+				
+				models.add(model); 
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return models;
+	}
+	
+	public List<TaskDto> findTaskByUser(UserDto userDto, int status){
+		String query = "SELECT * \r\n" + 
+				"FROM tasks as t JOIN users as u \r\n" + 
+				"on t.user_id = u.id\r\n" + 
+				"JOIN jobs as j \r\n" + 
+				"on t.job_id = j.id\r\n" + 
+				"WHERE u.id = ? and t.status_id = ?; "; 
+		
+		List<TaskDto> models = new LinkedList<TaskDto>();
+		try(Connection connection = MysqlConnection.getConnection()) {
+			PreparedStatement statement = connection.prepareStatement(query); 
+			statement.setInt(1, userDto.getId());
+			statement.setInt(2, status);
+			
+			ResultSet resultSet = statement.executeQuery(); 
+			while(resultSet.next()) {
+				TaskDto model = new TaskDto();
+				
+				model.setId(resultSet.getInt("id"));
+				model.setName(resultSet.getString("name"));
+				model.setStart_date(resultSet.getDate("start_date"));
+				model.setEnd_date(resultSet.getDate("end_date"));
+				model.setUser_id(resultSet.getInt("t.user_id"));
+				model.setJob_id(resultSet.getInt("t.job_id"));
+				model.setStatus_id(resultSet.getInt("t.status_id"));
+				model.setUser_name(resultSet.getString("u.fullname"));
+				model.setJob_name(resultSet.getString("j.name"));
+				
+				models.add(model);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return models; 
+	}
+	
+	public List<TaskDto> findTaskByJob(JobDto job, int status){
+		String query = "SELECT *\r\n" + 
+				"FROM  tasks as t JOIN jobs as j\r\n" + 
+				"ON j.id = t.job_id\r\n" + 
+				"JOIN users as u \r\n" + 
+				"ON t.user_id = u.id\r\n" + 
+				"WHERE j.id = ? and t.status_id = ? ;"; 
+		
+		List<TaskDto> models = new LinkedList<TaskDto>();
+		try(Connection connection = MysqlConnection.getConnection()) {
+			PreparedStatement statement = connection.prepareStatement(query); 
+			statement.setInt(1, job.getId());
+			statement.setInt(2, status);
+			
+			ResultSet resultSet = statement.executeQuery(); 
+			while(resultSet.next()) {
+				TaskDto model = new TaskDto();
+				
+				model.setId(resultSet.getInt("id"));
+				model.setName(resultSet.getString("name"));
+				model.setStart_date(resultSet.getDate("start_date"));
+				model.setEnd_date(resultSet.getDate("end_date"));
+				model.setUser_id(resultSet.getInt("t.user_id"));
+				model.setJob_id(resultSet.getInt("t.job_id"));
+				model.setStatus_id(resultSet.getInt("t.status_id"));
+				model.setUser_name(resultSet.getString("u.fullname"));
+				model.setJob_name(resultSet.getString("j.name"));
+				
+				models.add(model);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return models; 
 	}
 }
 		

@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.java.constants.UrlConstants;
 import com.java.dto.RoleDto;
 import com.java.service.RoleService;
+/*
+ *  Auth: PHẠM VÕ ĐỨC PHONG
+ */
 
-
-@WebServlet(urlPatterns = {"/role", "/role/add", "/role/delete", "/role/edit"})
+@WebServlet(urlPatterns = { UrlConstants.ROLE_URL , UrlConstants.ROLE_ADD_URL ,UrlConstants.ROLE_DELETE_URL, 
+		UrlConstants.ROLE_EDIT_URL })
 public class RoleController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -28,23 +32,23 @@ public class RoleController extends HttpServlet{
 		
 		String action = req.getServletPath(); 
 		switch (action) {
-		case "/role": 
+		case UrlConstants.ROLE_URL: 
 			req.setAttribute("roles", roleService.findAll());
 			req.getRequestDispatcher("/WEB-INF/views/role/index.jsp").forward(req, resp);
 			break;
-		case "/role/add": 
+		case UrlConstants.ROLE_ADD_URL : 
 			req.getRequestDispatcher("/WEB-INF/views/role/add.jsp").forward(req, resp);
 			break;
-		case "/role/edit": 
+		case UrlConstants.ROLE_EDIT_URL : 
 			String idEdit =  req.getParameter("id");
 			RoleDto model = roleService.findById(idEdit); 
 			req.setAttribute("role", model);
 			req.getRequestDispatcher("/WEB-INF/views/role/edit.jsp").forward(req, resp);
 			break;
-		case "/role/delete": 
+		case UrlConstants.ROLE_DELETE_URL: 
 			String idDelete = req.getParameter("id");
 			roleService.deleteById(idDelete);
-			resp.sendRedirect(req.getContextPath() + "/role");
+			resp.sendRedirect(req.getContextPath() + UrlConstants.ROLE_URL);
 			break;
 		default:
 			break; 
@@ -60,17 +64,17 @@ public class RoleController extends HttpServlet{
 		
 		String action = req.getServletPath(); 
 		switch (action) {
-			case "/role/add": 
+			case UrlConstants.ROLE_ADD_URL: 
 				roleService.insert(model);
 				break; 
-			case "/role/edit":
+			case UrlConstants.ROLE_EDIT_URL:
 				model.setId(Integer.valueOf(req.getParameter("id")));	
 				roleService.update(model); 
 				break; 
 			default:
 				break; 
 		}
-		resp.sendRedirect(req.getContextPath() + "/role");
+		resp.sendRedirect(req.getContextPath() + UrlConstants.ROLE_URL);
 	}
 }
 

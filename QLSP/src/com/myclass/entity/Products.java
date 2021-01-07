@@ -1,7 +1,5 @@
 package com.myclass.entity;
 
-import javax.sound.midi.Soundbank;
-
 public class Products {
 	private String id; 
 	private String cateId; 

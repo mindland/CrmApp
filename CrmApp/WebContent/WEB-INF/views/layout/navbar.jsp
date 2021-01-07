@@ -9,9 +9,9 @@
 			data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
 		<div class="top-left-part">
 			<a class="logo" href="<%=request.getContextPath()%>/home"><b><img
-					src="/CrmApp/static/plugins/images/pixeladmin-logo.png" alt="home" /></b><span
+					src="/CrmApp/static/plugins/images/yasua.png" alt="home"  width="70%" height="65%"/></b><span
 				class="hidden-xs"><img
-					src="/CrmApp/static/plugins/images/pixeladmin-text.png" alt="home" /></span></a>
+					src="/CrmApp/static/plugins/images/pixeladmin-text1.png" alt="home" /></span></a>
 		</div>
 		<ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
 			<li>
@@ -25,13 +25,13 @@
 			<li>
 				<div class="dropdown">
 					<a class="profile-pic dropdown-toggle" data-toggle="dropdown"
-						href="#"> <img src="/CrmApp/static/plugins/images/users/varun.jpg"
-						alt="user-img" width="36" class="img-circle" /> <b
-						class="hidden-xs">Cybersoft</b>
+						href="#"> <img src="${USER.getAvatar()}"
+						alt="user-img" width="36" class="img-circle" height="36" /> <b
+						class="hidden-xs"> ${USER.fullname }</b>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="profile.html">Thông tin cá nhân</a></li>
-						<li><a href="#">Thống kê công việc</a></li>
+						<li><a href="<c:url value="/profile/task?id=${ USER.id}" />">Thống kê công việc</a></li>
+						<li><a href="<c:url value="/profile?id=${ USER.id}" />">Thông tin cá nhân</a></li>
 						<li class="divider"></li>
 						<li><a href= "<c:url value="/logout" />" >Đăng xuất</a></li>
 					</ul>

@@ -3,6 +3,7 @@ package com.java.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.java.constants.StatusConstants;
 import com.java.dao.JobDao;
 import com.java.dto.JobDto;
 import com.java.model.Job;
@@ -22,7 +23,10 @@ public class JobService {
 								job.getId(),
 								job.getName(), 
 								job.getStart_date(),
-								job.getEnd_date()
+								job.getEnd_date(), 
+								this.loadStatisticJob(job.getId(), StatusConstants.CHUA_THUC_HIEN), 
+								this.loadStatisticJob(job.getId(), StatusConstants.DANG_THUC_HIEN), 
+								this.loadStatisticJob(job.getId(), StatusConstants.DA_HOAN_THANH)
 					));
 		}
 		
@@ -64,5 +68,14 @@ public class JobService {
 		job.setEnd_date(dto.getEnd_date());
 		
 		jobDao.update(job);
+	}
+	
+	public int loadStatisticJob(int id ,int status) {
+		double statistic = jobDao.loadStatisticJob(id, status); 
+		statistic = (double) Math.round(statistic * 100) / 100;
+		
+		double result = statistic*100; 
+		
+		return (int)result;
 	}
 }

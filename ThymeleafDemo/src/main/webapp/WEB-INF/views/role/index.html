@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Danh sách quyền</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h3 class="text-center my-2">DANH SÁCH QUYỀN</h3>
+				<a class="btn btn-primary my-2" th:href="@{/role/add}"
+					role="button">Thêm quyền</a>		
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Tên</th>
+							<th>Mô tả</th>
+							<th>Hành động</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="role : ${roles}">
+							<td th:text="${role.id}"></td>
+							<td th:text="${role.name}"></td>
+							<td th:text="${role.desc}"></td>
+							<td>
+								<a class="btn btn-sm btn-success" th:href="@{/role/edit(id=${role.id})}">Sửa</a>
+								<a class="btn btn-sm btn-danger" th:href="@{/role/delete(id=${role.id})}">Xóa</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

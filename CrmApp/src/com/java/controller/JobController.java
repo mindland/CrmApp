@@ -9,9 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.java.constants.StatusConstants;
 import com.java.constants.UrlConstants;
 import com.java.dto.JobDto;
 import com.java.service.JobService;
+import com.java.service.TaskService;
+
+/*
+ * SERVELET XỬ LÝ LIÊN QUAN ĐẾN TRANG DỰ ÁN 
+ *  Auth: PHẠM VÕ ĐỨC PHONG
+ * */
 
 @WebServlet(urlPatterns = { UrlConstants.JOB_URL, UrlConstants.JOB_ADD_URL, UrlConstants.JOB_DETAIL_URL 
 		, UrlConstants.JOB_DELETE_URL , UrlConstants.JOB_EDIT_URL})
@@ -20,10 +27,12 @@ public class JobController extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 	private JobService jobService = null; 
+	private TaskService taskService = null;
 	
 	@Override
 	public void init() throws ServletException {
 		jobService = new JobService(); 
+		taskService = new TaskService(); 
 	}
 		
 	@Override
@@ -50,6 +59,15 @@ public class JobController extends HttpServlet{
 			req.getRequestDispatcher("/WEB-INF/views/job/edit.jsp").forward(req, resp);
 			break; 
 		case UrlConstants.JOB_DETAIL_URL: 
+			String idDetail = req.getParameter("id"); 
+			JobDto jobDetail = jobService.findById(idDetail);
+			req.setAttribute("job", jobDetail);
+			req.setAttribute("chuaTH", jobService.loadStatisticJob(jobDetail.getId(),StatusConstants.CHUA_THUC_HIEN));
+			req.setAttribute("dangTH", jobService.loadStatisticJob(jobDetail.getId(),StatusConstants.DANG_THUC_HIEN));
+			req.setAttribute("daHT", jobService.loadStatisticJob(jobDetail.getId(),StatusConstants.DA_HOAN_THANH));
+			req.setAttribute("chuaThucHien", taskService.findTaskByJob(jobDetail, StatusConstants.CHUA_THUC_HIEN));
+			req.setAttribute("dangThucHien", taskService.findTaskByJob(jobDetail, StatusConstants.DANG_THUC_HIEN));
+			req.setAttribute("daHoanThanh", taskService.findTaskByJob(jobDetail, StatusConstants.DA_HOAN_THANH));	
 			req.getRequestDispatcher("/WEB-INF/views/job/detail.jsp").forward(req, resp);
 			break; 
 		default:
@@ -77,6 +95,6 @@ public class JobController extends HttpServlet{
 		default:
 			break; 
 		}
-		resp.sendRedirect(req.getContextPath() + "/job");
+		resp.sendRedirect(req.getContextPath() + UrlConstants.JOB_URL);
 	}
 }

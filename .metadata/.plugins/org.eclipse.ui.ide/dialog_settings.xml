@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.JavaProjectWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+		</list>
 	</section>
 	<section name="SmartImportWizard">
 		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
@@ -20,6 +23,9 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\hoang\Java8\SERVLET\ThymeleafDemo"/>
+			<item value="C:\Users\hoang\Java8\SERVLET\ThymeleadfDemo"/>
+			<item value="C:\Users\hoang\Java8\SERVLET\JSPServlet-UploadFile"/>
 			<item value="C:\Users\hoang\Java8\SERVLET\crm_app"/>
 			<item value="C:\Users\hoang\Java8\SERVLET\SitemeshDemo"/>
 			<item value="C:\Users\hoang\Java8\SERVLET\QLSanPham"/>

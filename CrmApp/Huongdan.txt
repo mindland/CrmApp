@@ -1,0 +1,3 @@
+ Ở LẦN ĐẦU TIÊN CHẠY TRANG WEB: 
+- EMAIL ĐĂNG NHẬP: admin@gmail.com
+- PASSWORD : admin	

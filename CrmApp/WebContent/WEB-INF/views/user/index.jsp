@@ -41,10 +41,13 @@
 									<td>${item.email }</td>
 									<td>${item.phone }</td>
 									<td>${item.roleName }</td>
-									<td><a href="<c:url value="/user/edit?id=${item.id}"/>" class="btn btn-sm btn-primary">Sửa</a> <a
-										href="<c:url value="/user/delete?id=${item.id}"/>" class="btn btn-sm btn-danger">Xóa</a> 
-										<a href= "<c:url value="/user/detail?id=${item.id}"/>"
-										class="btn btn-sm btn-info">Xem</a></td>
+									<td>
+									<c:if test="${USER.roleName == 'ROLE_ADMIN' }">
+										<a href="<c:url value="/user/edit?id=${item.id}"/>" class="btn btn-sm btn-primary">Sửa</a> 
+										<a href="<c:url value="/user/delete?id=${item.id}"/>" class="btn btn-sm btn-danger">Xóa</a> 
+									</c:if>
+									<a href= "<c:url value="/user/detail?id=${item.id}"/>"class="btn btn-sm btn-info">Xem</a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

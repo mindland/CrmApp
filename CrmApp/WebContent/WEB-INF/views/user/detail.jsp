@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,38 +19,39 @@
 		<div class="col-md-4 col-xs-12">
 			<div class="white-box">
 				<div class="user-bg">
-					<img width="100%" alt="user" src="/CrmApp/static/plugins/images/large/img1.jpg">
+					<img width="100%" alt="user"
+						src="${user.getAvatar()}">
 					<div class="overlay-box">
 						<div class="user-content">
 							<a href="javascript:void(0)"><img
-								src="/CrmApp/static/plugins/images/users/genu.jpg" class="thumb-lg img-circle"
-								alt="img"></a>
-							<h4 class="text-white">phongpham</h4>
-							<h5 class="text-white">info@myadmin.com</h5>
+								src="${user.getAvatar()}"
+								class="thumb-lg img-circle" alt="img"></a>
+							<h4 class="text-white">${user.fullname}</h4>
+							<h5 class="text-white">${user.email}</h5>
 						</div>
 					</div>
 				</div>
 				<div class="user-btm-box">
-					<div class="col-md-4 col-sm-4 text-center">
+					<div class="col-md-4 col-sm-4 text-center ">
 						<p class="text-purple">
 							<i class="ti-facebook"></i>
 						</p>
-						<h4>20%</h4>
-						<h6>Chưa thực hiện</h6>
+						<h4 class="text-danger">${chuaThucHien}%</h4>
+						<h6 class="text-danger font-weight-bold">Chưa thực hiện</h6>
 					</div>
 					<div class="col-md-4 col-sm-4 text-center">
 						<p class="text-blue">
 							<i class="ti-twitter"></i>
 						</p>
-						<h4>50%</h4>
-						<h6>Đang thực hiện</h6>
+						<h4 class="text-megna">${dangThucHien }%</h4>
+						<h6 class="text-megna font-weight-bold">Đang thực hiện</h6>
 					</div>
 					<div class="col-md-4 col-sm-4 text-center">
 						<p class="text-danger">
 							<i class="ti-dribbble"></i>
 						</p>
-						<h4>30%</h4>
-						<h6>Hoàn thành</h6>
+						<h4 class="text-primary">${daHoanThanh }%</h4>
+						<h6 class="text-primary font-weight-bold">Hoàn thành</h6>
 					</div>
 				</div>
 			</div>
@@ -58,24 +60,16 @@
 			<div class="white-box">
 				<form class="form-horizontal form-material">
 					<div class="form-group">
-						<label class="col-md-12">Full Name</label>
-						<span>${user.fullname}</span>
+						<label class="col-md-12">Full Name</label> <span>${user.fullname}</span>
 					</div>
 					<div class="form-group">
-						<label for="example-email" class="col-md-12">Email</label>
-					 	<span>${user.email}</span>
+						<label for="example-email" class="col-md-12">Email</label> <span>${user.email}</span>
 					</div>
 					<div class="form-group">
-						<label class="col-md-12">Password</label>
-						<span>${user.password}</span>
+						<label class="col-md-12">Phone No</label> <span>${user.phone}</span>
 					</div>
 					<div class="form-group">
-						<label class="col-md-12">Phone No</label>
-						<span>${user.phone}</span>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-12">Address</label>
-						<span>${user.address}</span>
+						<label class="col-sm-12">Address</label> <span>${user.address}</span>
 					</div>
 				</form>
 			</div>
@@ -84,65 +78,54 @@
 	<br />
 	<!-- /.row -->
 	<!-- BEGIN DANH SÁCH CÔNG VIỆC -->
-	<h4>DANH SÁCH CÔNG VIỆC</h4>
+
+	<h4 style="color: #7F7F7F; font-weight: bold;">Danh sách công việc</h4>
 	<div class="row">
 		<div class="col-md-4">
 			<div class="white-box">
-				<h3 class="box-title">Chưa thực hiện</h3>
+				<h3 class="box-title text-danger">Chưa thực hiện</h3>
 				<div class="message-center">
-					<a href="#">
-						<div class="mail-contnet">
-							<h5>Pavan kumar</h5>
-							<span class="mail-desc">Just see the my admin!</span> <span
-								class="time">9:30 AM</span>
-						</div>
-					</a> <a href="#">
-						<div class="mail-contnet">
-							<h5>Sonu Nigam</h5>
-							<span class="mail-desc">I've sung a song! See you at</span> <span
-								class="time">9:10 AM</span>
-						</div>
-					</a>
+					<c:forEach var="task" items="${taskChuaThucHien }">
+						<a href="<c:url value="/task/detail?id=${task.id}" />">
+							<div class="mail-contnet">
+								<h5>${task.job_name }</h5>
+								<span class="mail-desc">${task.name}</span> <span
+									class="time">End date: <span class="dateId">${task.end_date }</span></span>
+							</div>
+						</a>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="white-box">
-				<h3 class="box-title">Đang thực hiện</h3>
+				<h3 class="box-title text-megna">Đang thực hiện</h3>
 				<div class="message-center">
-					<a href="#">
-						<div class="mail-contnet">
-							<h5>Pavan kumar</h5>
-							<span class="mail-desc">Just see the my admin!</span> <span
-								class="time">9:30 AM</span>
-						</div>
-					</a> <a href="#">
-						<div class="mail-contnet">
-							<h5>Sonu Nigam</h5>
-							<span class="mail-desc">I've sung a song! See you at</span> <span
-								class="time">9:10 AM</span>
-						</div>
-					</a>
+					<c:forEach var="task" items="${taskDangThucHien }">
+						<a href="<c:url value="/task/detail?id=${task.id}" />">
+							<div class="mail-contnet">
+								<h5>${task.job_name }</h5>
+								<span class="mail-desc">${task.name}</span> <span
+									class="time">End date: <span class="dateId">${task.end_date }</span></span>
+							</div>
+						</a>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="white-box">
-				<h3 class="box-title">Đã hoàn thành</h3>
+				<h3 class="box-title  text-primary">Đã hoàn thành</h3>
 				<div class="message-center">
-					<a href="#">
-						<div class="mail-contnet">
-							<h5>Pavan kumar</h5>
-							<span class="mail-desc">Just see the my admin!</span> <span
-								class="time">9:30 AM</span>
-						</div>
-					</a> <a href="#">
-						<div class="mail-contnet">
-							<h5>Sonu Nigam</h5>
-							<span class="mail-desc">I've sung a song! See you at</span> <span
-								class="time">9:10 AM</span>
-						</div>
-					</a>
+					<c:forEach var="task" items="${taskDaHoanThanh }">
+						<a href="<c:url value="/task/detail?id=${task.id}" />">
+							<div class="mail-contnet">
+								<h5>${task.job_name }</h5>
+								<span class="mail-desc">${task.name}</span> <span
+									class="time">End date: <span class="dateId">${task.end_date }</span></span>
+							</div>
+						</a>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

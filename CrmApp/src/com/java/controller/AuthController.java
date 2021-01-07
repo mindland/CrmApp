@@ -9,10 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.java.constants.AdminConstants;
+import com.java.constants.MessageConstants;
+import com.java.constants.UrlConstants;
 import com.java.dto.UserDto;
 import com.java.service.UserService;
 
-@WebServlet(urlPatterns = {"/login", "/logout"})
+/*
+ * SERVLET QUẢN LÝ LOGIN - LOGOUT NGƯỜI DÙNG
+ * Auth: PHẠM VÕ ĐỨC PHONG
+ * */
+
+@WebServlet(urlPatterns = {UrlConstants.LOGIN_URL, UrlConstants.LOGOUT_URL})
 public class AuthController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -28,13 +36,13 @@ public class AuthController extends HttpServlet {
 		String action = req.getServletPath(); 
 		
 		switch (action) {
-			case "/login":
+			case UrlConstants.LOGIN_URL:
 				req.getRequestDispatcher("/WEB-INF/views/login/index.jsp").forward(req, resp);
 				break; 
-			case "/logout":
-				HttpSession session = req.getSession(); 
-				session.removeAttribute("USER");
-				resp.sendRedirect(req.getContextPath() + "/login");
+			case UrlConstants.LOGOUT_URL:
+					HttpSession session = req.getSession(); 
+					session.removeAttribute("USER");
+					resp.sendRedirect(req.getContextPath() + UrlConstants.LOGIN_URL);
 				break; 
 			default:
 				break; 
@@ -47,17 +55,27 @@ public class AuthController extends HttpServlet {
 		String email = req.getParameter("email"); 
 		String password = req.getParameter("password"); 
 
+		if(email.equals(AdminConstants.ADMIN_EMAIL)) {
+			if(userService.findByEmail(email) == null) {
+				UserDto adminDto = new UserDto(); 
+				adminDto.setFullname(AdminConstants.ADMIN_FULLNAME);
+				adminDto.setEmail(AdminConstants.ADMIN_EMAIL);
+				adminDto.setPassword(AdminConstants.ADMIN_PASSWORD);
+				adminDto.setRole_id(AdminConstants.ADMIN_ROLEID);
+				userService.insert(adminDto);
+			}
+		}
+
 		UserDto modelDto = userService.checkLoginUserDto(email, password); 
 		
 		if(modelDto != null) {
 			HttpSession session = req.getSession(); 
 			session.setAttribute("USER", modelDto);
 			
-			resp.sendRedirect(req.getContextPath() + "/home");
+			resp.sendRedirect(req.getContextPath() + UrlConstants.HOME_URL);
 		}
 		else {
-			String message = "Thông tin đăng nhập không đúng !"; 
-			req.setAttribute("message", message);
+			req.setAttribute("message", MessageConstants.LOGIN_MESSAGE);
 			req.getRequestDispatcher("/WEB-INF/views/login/index.jsp").forward(req, resp);
 		}
 	}

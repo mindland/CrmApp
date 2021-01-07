@@ -9,14 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.java.constants.UrlConstants;
 import com.java.dao.StatusDao;
 import com.java.dto.TaskDto;
 import com.java.service.JobService;
 import com.java.service.TaskService;
 import com.java.service.UserService;
 
+/*
+ *  Auth: PHẠM VÕ ĐỨC PHONG
+ */
 
-@WebServlet(urlPatterns = {"/task", "/task/add", "/task/detail", "/task/delete",  "/task/edit"})
+@WebServlet(urlPatterns = {UrlConstants.TASK_URL , UrlConstants.TASK_ADD_URL, "/task/detail", UrlConstants.TASK_DELETE_URL
+		, UrlConstants.TASK_EDIT_URL})
 public class TaskController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -39,17 +44,17 @@ public class TaskController extends HttpServlet {
 		String action = req.getServletPath(); 
 		
 		switch (action) {
-		case "/task": 
+		case UrlConstants.TASK_URL : 
 			req.setAttribute("tasks", taskService.findAll());
 			req.getRequestDispatcher("/WEB-INF/views/task/index.jsp").forward(req, resp);
 			break; 
-		case "/task/add": 	
+		case UrlConstants.TASK_ADD_URL: 	
 			req.setAttribute("jobs", jobService.findAll());
 			req.setAttribute("users", userService.findAll());
 			req.setAttribute("status", statusDao.findAll());
 			req.getRequestDispatcher("/WEB-INF/views/task/add.jsp").forward(req, resp);
 			break; 
-		case "/task/edit": 	
+		case UrlConstants.TASK_EDIT_URL: 	
 			String idEdit = req.getParameter("id"); 
 			TaskDto task = taskService.findById(idEdit); 
 			req.setAttribute("task", task);
@@ -58,17 +63,17 @@ public class TaskController extends HttpServlet {
 			req.setAttribute("status", statusDao.findAll());
 			req.getRequestDispatcher("/WEB-INF/views/task/edit.jsp").forward(req, resp);	
 			break; 
-		case "/task/delete":
+		case UrlConstants.TASK_DELETE_URL:
 			String idDel = req.getParameter("id"); 
 			taskService.delete(idDel); 
-			resp.sendRedirect(req.getContextPath() + "/task");
+			resp.sendRedirect(req.getContextPath() + UrlConstants.TASK_URL);
 			break; 
-//		case "/user/detail": 
-//			String idDetail = req.getParameter("id"); 
-//			UserDto user = userService.findById(idDetail); 
-//			req.setAttribute("user", user);
-//			req.getRequestDispatcher("/WEB-INF/views/user/detail.jsp").forward(req, resp);
-//			break; 	
+		case UrlConstants.TASK_DETAIL: 
+			String idDetail = req.getParameter("id"); 
+			TaskDto taskDetail = taskService.findById(idDetail);
+			req.setAttribute("task", taskDetail);
+			req.getRequestDispatcher("/WEB-INF/views/task/detail.jsp").forward(req, resp);
+			break; 	
 		default:
 			break; 
 		}
@@ -89,10 +94,10 @@ public class TaskController extends HttpServlet {
 		String action = req.getServletPath(); 
 		
 		switch (action) {
-			case "/task/add":
+			case UrlConstants.TASK_ADD_URL:
 				taskService.insert(dto);
 				break; 
-			case "/task/edit":
+			case UrlConstants.TASK_EDIT_URL:
 				dto.setId(Integer.valueOf(req.getParameter("id")));
 				taskService.update(dto);
 				break; 
@@ -100,7 +105,7 @@ public class TaskController extends HttpServlet {
 				break; 
 		}
 		
-		resp.sendRedirect(req.getContextPath() + "/task");
+		resp.sendRedirect(req.getContextPath() + UrlConstants.TASK_URL);
 	}	
 
 }

@@ -3,7 +3,9 @@ package com.java.service;
 import java.util.List;
 
 import com.java.dao.TaskDao;
+import com.java.dto.JobDto;
 import com.java.dto.TaskDto;
+import com.java.dto.UserDto;
 import com.java.model.Task;
 
 public class TaskService {
@@ -56,4 +58,17 @@ public class TaskService {
 		
 		taskDao.update(model); 
 	}
+	
+	public List<TaskDto> findByUserId(String id){
+		return taskDao.findByUserId(id);
+	}
+	
+	public List<TaskDto> findTaskByUser(UserDto userDto, int status){
+		return taskDao.findTaskByUser(userDto, status);
+	}
+	
+	public List<TaskDto> findTaskByJob(JobDto job, int status){
+		return taskDao.findTaskByJob(job, status);
+	}
 }	
+

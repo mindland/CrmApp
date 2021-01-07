@@ -22,6 +22,7 @@
 				<form class="form-horizontal form-material"
 					action="<%=request.getContextPath()%>/user/edit" method="POST">
 					<input type="hidden" name="id" value="${user.id}" />
+					<input type="hidden" name="avatar" value="${ user.avatar }">
 					<div class="form-group">
 						<label class="col-md-12">Full Name</label>
 						<div class="col-md-12">
@@ -38,16 +39,9 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-md-12">Password</label>
-						<div class="col-md-12">
-							<input type="password" value="${user.password }"
-								class="form-control form-control-line" name="password">
-						</div>
-					</div>
-					<div class="form-group">
 						<label class="col-md-12">Phone No</label>
 						<div class="col-md-12">
-							<input type="text" value="${user.phone }"
+							<input type="text" value="${ user.phone }"
 								class="form-control form-control-line" name="phone">
 						</div>
 					</div>
@@ -56,13 +50,6 @@
 						<div class="col-md-12">
 							<input type="text" value="${user.address }"
 								class="form-control form-control-line" name="address">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-12">Avtar</label>	
-						<div class="col-md-12">
-							<input type="text" class="form-control form-control-line"
-								name="avatar" value="${ user.avatar }">
 						</div>
 					</div>
 					<div class="form-group">

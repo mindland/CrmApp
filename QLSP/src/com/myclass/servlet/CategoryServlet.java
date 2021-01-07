@@ -1,7 +1,6 @@
 package com.myclass.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,6 +15,7 @@ import com.myclass.dao.CategoryDao;
 @WebServlet(urlPatterns = { "/category", "/category/add", "/category/edit", "/category/delete" })
 public class CategoryServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
 	private CategoryDao categoryDao = null;  
 	
 	@Override
